@@ -26,16 +26,16 @@ public class PdfSegmenterController {
             @RequestParam("file") MultipartFile file,
             @RequestParam("cuts") int cuts) {
         try {
-            System.out.println("got 1");
+
             File pdfFile = convertMultipartFileToFile(file);
-            System.out.println("got 2");
+
             try(PDDocument document = PDDocument.load(pdfFile)) {
                 if (cuts > document.getNumberOfPages()){
-                    System.out.println("=============================Adjusted=================");
+
                     pdfSegmentationService.segmentPDF(pdfFile, document.getNumberOfPages());}
                 else pdfSegmentationService.segmentPDF(pdfFile, cuts-1);
             }
-            System.out.println("got 3");
+
             return new ResponseEntity<>("PDF segmented successfully.", HttpStatus.OK);
         } catch (IOException e) {
             System.out.println(e.getMessage());

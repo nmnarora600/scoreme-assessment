@@ -15,7 +15,7 @@ public class PdfSegmentationService {
     public void segmentPDF(File pdfFile, int numberOfCuts) throws IOException {
 
         try (PDDocument document = PDDocument.load(pdfFile)) {
-            System.out.println("Inside Pdf segservice");
+
             CustomPDFStripper stripper = new CustomPDFStripper();
             stripper.setSortByPosition(true);
             stripper.setStartPage(1);

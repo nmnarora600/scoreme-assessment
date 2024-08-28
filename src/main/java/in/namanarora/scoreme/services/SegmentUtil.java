@@ -51,7 +51,7 @@ public class SegmentUtil {
     }
     public static void createSegmentedPDFs(PDDocument document, List<Integer> cutPositions) throws IOException {
         // Ensure the cut positions are sorted and unique
-        String outputDirectory = "oops";
+        String outputDirectory = "Outputs";
         cutPositions = cutPositions.stream().distinct().sorted().collect(Collectors.toList());
         int pageCount = document.getNumberOfPages();
 
@@ -77,7 +77,7 @@ public class SegmentUtil {
             // Use append mode to avoid overwriting existing content
             try (PDPageContentStream contentStream = new PDPageContentStream(newDoc, page, PDPageContentStream.AppendMode.APPEND, true)) {
                 // Here you can add additional content if needed
-                System.out.println("Content Stream=" + contentStream);
+
             }
 
             String outputFileName = directory + File.separator + "Segment_" + i + ".pdf";
